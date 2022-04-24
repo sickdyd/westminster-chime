@@ -3,7 +3,6 @@ const stopChimeButton = document.getElementById('stop-chime');
 const timeIntervalSelect = document.getElementById('time-interval-select');
 const audioPlayer = document.getElementById('audio-player');
 const currentTimeSpan = document.querySelector('.current-time');
-let chimeIntervalId;
 const playChime = () => {
     if (!audioPlayer.paused) {
         audioPlayer.currentTime = 0;
@@ -16,7 +15,7 @@ const scheduleChime = () => {
     const currentTimeInMs = Date.now();
     const difference = currentTimeInMs % interval;
     const nextSchedule = interval - difference;
-    chimeIntervalId = setTimeout(() => {
+    setTimeout(() => {
         playChime();
         scheduleChime();
     }, nextSchedule);
@@ -26,7 +25,6 @@ const handleSetChime = () => {
     scheduleChime();
 };
 const handleStopChime = () => {
-    clearTimeout(chimeIntervalId);
     audioPlayer.currentTime = 0;
     audioPlayer.pause();
 };

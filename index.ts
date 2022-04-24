@@ -3,8 +3,6 @@ const timeIntervalSelect = document.getElementById('time-interval-select') as HT
 const audioPlayer = document.getElementById('audio-player') as HTMLAudioElement
 const currentTimeSpan = document.querySelector('.current-time') as HTMLSpanElement
 
-let chimeIntervalId: number | undefined
-
 const playChime = () => {
   if (!audioPlayer.paused) {
     audioPlayer.currentTime = 0
@@ -20,7 +18,7 @@ const scheduleChime = () => {
   const difference = currentTimeInMs % interval
   const nextSchedule = interval - difference
 
-  chimeIntervalId = setTimeout(() => {
+  setTimeout(() => {
     playChime()
     scheduleChime()
   }, nextSchedule)
@@ -32,7 +30,6 @@ const handleSetChime = () => {
 }
 
 const handleStopChime = () => {
-  clearTimeout(chimeIntervalId)
   audioPlayer.currentTime = 0
   audioPlayer.pause()
 }
