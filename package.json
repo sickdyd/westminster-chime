@@ -1,0 +1,19 @@
+{
+  "name": "westminster-chime",
+  "version": "1.0.0",
+  "description": "Have the Westimnster chime sound at a selected interval",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "yarn tsc -p tsconfig.json"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.14.0",
+    "prettier": "2.6.2",
+    "typescript": "^4.6.3"
+  }
+}

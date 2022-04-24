@@ -1,0 +1,79 @@
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background-color: #d9cfc5;
+  font-family: Montaga;
+  color: #a23419;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 100vh;
+}
+
+.clock-image {
+  margin-bottom: 2rem;
+  height: 70px;
+}
+
+.type-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.clock-time-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clock-controls {
+  display: flex;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+input[type='number'] {
+  all: unset;
+  width: 50px;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+button {
+  border-radius: 4px;
+  background-color: #c6612b;
+  padding: 0.5rem;
+  color: white;
+}
+
+select {
+  border-radius: 4px;
+  font-size: inherit;
+  border: 0;
+  padding: 0.5rem;
+  background-color: white;
+  color: #c6612b;
+}
+
+a {
+  color: #a49375;
+  text-decoration: none;
+  margin-top: 5rem;
+}
