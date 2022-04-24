@@ -39,10 +39,12 @@ const handleStopChime = () => {
 
 const displayCurrentTime = () => {
   currentTimeSpan.innerText = new Date().toLocaleTimeString('en-GB')
+
+  requestAnimationFrame(displayCurrentTime)
 }
 
 timeIntervalSelect.addEventListener('change', handleSetChime)
 stopChimeButton.addEventListener('click', handleStopChime)
 
-setInterval(displayCurrentTime, 100)
+displayCurrentTime()
 handleSetChime()
