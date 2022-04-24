@@ -18,31 +18,19 @@
         <source src="./media/chime.mp4" type="audio/mpeg" />
       </audio>
       <img class="clock-image" src="./assets/images/clock.png" alt="grandfather's clock" />
-      <div class="type-wrapper">
-        <h3>Play sound every:</h3>
-        <div class="clock-time-settings">
-          <label for="input-hours">Hours</label>
-          <input class="time" id="input-hours" data-type="hours" type="number" value="0" />
-          <label for="input-minutes">Minutes</label>
-          <input class="time" id="input-minutes" data-type="minutes" type="number" value="0" />
-          <label for="input-seconds">Seconds</label>
-          <input class="time" id="input-seconds" data-type="seconds" type="number" value="1" />
-        </div>
-        <div class="clock-controls">
-          <button id="set-chime">Set chime!</button>
-          <button id="stop-chime">Stop chime!</button>
-        </div>
-
-        <h3>Sync with current time:</h3>
-        <select id="select-interval">
-          <option value="1000">Every minute</option>
-          <option value="5000">Every 5 minutes</option>
-          <option value="15000">Every 15 minutes</option>
-          <option value="30000">Every 30 minutes</option>
-          <option value="60000">Every hour</option>
+      <div class="current-time">
+        <span>00</span>:<span>00</span>:
+        <span>00</span>
+      </div>
+      <div class="ui-wrapper">
+        <h3>Play chime every:</h3>
+        <select id="time-interval-select">
+          <option value="300000">Every 5 minutes</option>
+          <option value="900000">Every 15 minutes</option>
+          <option value="1800000">Every 30 minutes</option>
+          <option value="3600000" selected>Every hour</option>
         </select>
         <div class="clock-controls">
-          <button id="set-chime">Set chime!</button>
           <button id="stop-chime">Stop chime!</button>
         </div>
       </div>

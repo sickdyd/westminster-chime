@@ -23,7 +23,7 @@ main {
   height: 70px;
 }
 
-.type-wrapper {
+.ui-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,6 +33,15 @@ main {
   border: 1px solid white;
   border-radius: 4px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.current-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .clock-time-settings {

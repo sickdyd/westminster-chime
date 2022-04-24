@@ -1,40 +1,46 @@
 "use strict";
-const setChimeButton = document.getElementById('set-chime');
 const stopChimeButton = document.getElementById('stop-chime');
+const timeIntervalSelect = document.getElementById('time-interval-select');
 const audioPlayer = document.getElementById('audio-player');
 let chimeIntervalId;
-const computeInterval = () => {
-    const timeElements = document.getElementsByClassName('time');
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-    for (const element of timeElements) {
-        switch (element.dataset['type']) {
-            case 'hours':
-                hours = parseInt(element.value);
-                break;
-            case 'minutes':
-                minutes = parseInt(element.value);
-                break;
-            case 'seconds':
-                seconds = parseInt(element.value);
-                break;
-        }
-    }
-    return hours * 1000 * 60 * 60 + minutes * 1000 * 60 + seconds * 1000;
-};
 const playChime = () => {
-    audioPlayer.paused && audioPlayer.play();
+    if (!audioPlayer.paused) {
+        audioPlayer.currentTime = 0;
+        audioPlayer.pause();
+    }
+    audioPlayer.play();
+};
+const scheduleChime = () => {
+    const interval = parseInt(timeIntervalSelect.value);
+    const currentTimeInMs = Date.now();
+    const difference = currentTimeInMs % interval;
+    const nextSchedule = interval - difference;
+    chimeIntervalId = setTimeout(() => {
+        playChime();
+        scheduleChime();
+    }, nextSchedule);
 };
 const handleSetChime = () => {
-    const interval = computeInterval();
-    console.log('setting', interval);
-    interval >= 1000 && (chimeIntervalId = setInterval(playChime, interval));
+    handleStopChime();
+    scheduleChime();
 };
 const handleStopChime = () => {
-    clearInterval(chimeIntervalId);
+    clearTimeout(chimeIntervalId);
     audioPlayer.currentTime = 0;
     audioPlayer.pause();
 };
-setChimeButton.addEventListener('click', handleSetChime);
+const displayCurrentTime = () => {
+    var _a;
+    const spanElements = (_a = document
+        .querySelector('.current-time')) === null || _a === void 0 ? void 0 : _a.getElementsByTagName('span');
+    const hours = new Date().getHours().toString();
+    const minutes = new Date().getMinutes().toString();
+    const seconds = new Date().getSeconds().toString();
+    spanElements[0].innerText = hours.length === 1 ? `0${hours}` : hours;
+    spanElements[1].innerText = minutes.length === 1 ? `0${minutes}` : minutes;
+    spanElements[2].innerText = seconds.length === 1 ? `0${seconds}` : seconds;
+};
+timeIntervalSelect.addEventListener('change', handleSetChime);
 stopChimeButton.addEventListener('click', handleStopChime);
+setInterval(displayCurrentTime, 100);
+handleSetChime();
